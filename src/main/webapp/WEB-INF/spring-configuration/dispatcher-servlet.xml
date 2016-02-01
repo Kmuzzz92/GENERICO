@@ -1,0 +1,120 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<description>
+		Spring MVC Configuration, Resources filtered, ViewResolvers
+	</description>
+
+	<context:component-scan base-package="mx.com" />
+	
+	<import resource="app-global.xml" />
+
+
+	<mvc:annotation-driven />
+	<!--
+			S T A T I C   R E S O U R C E S
+	 -->	
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/*.htm" location="/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/rscr/**" location="/rscr/" />
+	<!--
+			I N T E R C E P T O R S
+	 -->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" 
+			p:paramName="${paramName}"
+			/>
+		
+		<bean id="webContentInterceptor"
+			class="org.springframework.web.servlet.mvc.WebContentInterceptor" 
+			p:cacheSeconds="0"
+			/>
+	</mvc:interceptors>
+
+	<!-- 
+		I 1 8 N 
+			(Based on a cookie) 
+	-->
+	
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver" 
+		p:cookieName="${cookieName}" 
+		p:cookieMaxAge="${cookieMaxAge}" 
+		p:defaultLocale="${defaultLocale}"
+		/>
+		
+	<!--
+	(JSR-303) setup
+	 -->	
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	
+	<!--
+			A P A C H E   T I L E S
+	 -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
+		p:definitions-ref="tilesDefinitionsList" />
+
+	<util:list id="tilesDefinitionsList">
+		<value>/WEB-INF/tiles-defs/template*.xml</value>
+	</util:list>
+	
+	<!--  
+			S P R I N G   H A N D L E R   M A P P I N G S
+	-->
+	<!--  -->
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/**/*.htm">staticViewController</prop>
+			</props>
+		</property>
+	</bean>
+		
+	<!--  
+			S P R I N G   C O N T R O L L E R S
+	 -->
+	 <!-- If user don't want to include any logical operation on request and redirect to some resource -->	 
+	 <bean name="staticViewController"
+		   class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+	
+
+	<!-- 
+			S P R I N G   V I E W   R E S O L V E R S	
+	 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1"/>
+
+	<!-- Based on Tiles -->	
+	<bean id="tilesViewResolver" 
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"
+		p:order="0" />
+		
+
+	<!-- Based on JSTL/JSP -->
+<!-- 	<bean -->
+<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver" -->
+<!-- 		p:viewClass="org.springframework.web.servlet.view.JstlView" p:prefix="/WEB-INF/jsp/" -->
+<!-- 		p:suffix=".jsp"  -->
+<!-- 		p:order="2"/> -->
+		
+	<!-- 
+			S P R I N G   V I E W   	
+	 -->
+	<!-- json view, capable of converting any POJO to json format -->
+	<bean id="jsonView"
+		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+		
+</beans>

@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+html,body{
+	margin: 0;
+	background-color: rgb(230,230,230);
+	width: 100%;
+	font-family: Roboto,Open Sans,Segoe UI,Helvetica,Arial,sans-serif;
+}
+
+div#leftLogin{
+	background-color: rgb(16,124,16);
+	float: left;
+	width: 15%;
+	height: 100%;
+	position: absolute;
+}
+
+div#login{
+	float: left;
+	width: 30%;
+	margin-left: 35%;
+	margin-top: 15%;
+	border-radius: 25px;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+}
+
+div#login 
