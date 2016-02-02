@@ -7,11 +7,11 @@
 	<packaging>war</packaging>
 
 	<version>1.0-SNAPSHOT</version>
-	<url>http://localhost/GENERICO</url>
+	<url>http://localhost/SCRUM_TAB</url>
 
 	<organization>
-		<name>GENERICO</name>
-		<url>http://localhost/GENERICO</url>
+		<name>SCRUM_TAB</name>
+		<url>http://localhost/SCRUM_TAB</url>
 	</organization>
 
 	<!-- Complete Developer Information -->
@@ -460,7 +460,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<name>GENERICO</name>
-	<artifactId>GENERICO</artifactId>
-	<description>PROYECTO GENERICO</description>
+	<description>PROYECTO SCRUM_TAB</description>
+	<artifactId>SCRUM_TAB</artifactId>
+	<name>SCRUM_TAB</name>
 </project>
