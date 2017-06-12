@@ -12,13 +12,13 @@
 		maxActive="8" 
 		maxIdle="3"
 		maxWait="10000" 
-		username="Usuario" 
-		password="Cesar1992." 
+		username="jonatan" 
+		password="jonatan" 
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 		validationQuery="select 1" 
 		removeAbandonedTimeout="60"
 		removeAbandoned="true" 
 		logAbandoned="true"
-		url="jdbc:sqlserver://192.168.0.3:50546;databaseName=SCRUM_TAB;applicationName=SCRUM_TAB" />
+		url="jdbc:sqlserver://127.0.0.1:49857;databaseName=plataforma;applicationName=SCRUM_TAB" />
 
 </Context>  

@@ -28,4 +28,19 @@ public class ContextController {
 	public String accesssDenied() {
 		return "403";
 	}
+	
+	@RequestMapping(value="/alumno", method = RequestMethod.GET)
+	public String alumno(){
+		return "alumno";
+	}
+	
+	@RequestMapping(value="/profesor", method = RequestMethod.GET)
+	public String profesor(){
+		return "profesor";
+	}
+	
+	@RequestMapping(value="/registro", method = RequestMethod.GET)
+	public String regitro(){
+		return "registro";
+	}
 }

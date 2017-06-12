@@ -1,29 +1,43 @@
 @CHARSET "ISO-8859-1";
 
-html,body{
-	margin: 0;
-	background-color: rgb(230,230,230);
+body{
+	
+	background: url('../img/tabletmate2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	color:#000;
+  	background-color:#333;
+  	font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+}
+
+.panel-default {
+opacity: 0.9;
+margin-top:30px;
+}
+.form-group.last { margin-bottom:0px; }
+
+a:link, a:visited {
+	color:#eee;
+}
+
+.jumbotron{
+	background-color: #fff;
+	color: #FFFF;
+}
+
+.btn-lg{
 	width: 100%;
-	font-family: Roboto,Open Sans,Segoe UI,Helvetica,Arial,sans-serif;
+	background-color: #2427ac;
+	color: #fff;
+	margin-top: 2em;
 }
 
-div#leftLogin{
-	background-color: rgb(16,124,16);
-	float: left;
-	width: 15%;
-	height: 100%;
-	position: absolute;
+td{
+	width: 80%;
 }
 
-div#login{
-	float: left;
-	width: 30%;
-	margin-left: 35%;
-	margin-top: 15%;
-	border-radius: 25px;
-	border-color: black;
-	border-style: solid;
-	border-width: 1px;
+.registro{
+	background-color: rgba(255,255,255,0.5);
 }
-
-div#login 

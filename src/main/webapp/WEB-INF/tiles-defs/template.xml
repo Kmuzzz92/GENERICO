@@ -9,6 +9,12 @@
 
 <tiles-definitions>
 
+	<!-- inicio -->
+	<definition name="inicio" template="/WEB-INF/jsp/tiles/templates/defaultTemplate.jsp">
+		<put-attribute name="body" value="/WEB-INF/jsp/login/inicio.jsp" />
+		<put-attribute name="leftPanel" value="/WEB-INF/jsp/tiles/login/inicio.jsp"/>
+	</definition>
+
     <!-- Default Template -->
     <definition name="defaultTemplate" template="/WEB-INF/jsp/tiles/templates/defaultTemplate.jsp">            
         <put-attribute name="leftPanel" value="/WEB-INF/jsp/tiles/default/blank.jsp"/>
@@ -22,8 +28,26 @@
     </definition>
   
     <!-- 403  Page -->
-	 <definition name="403" extends="defaultTemplate">            
-		<put-attribute name="body"    value="/WEB-INF/jsp/tiles/default/noAccess.jsp" />
+	<definition name="403" extends="defaultTemplate">
+		<put-attribute name="body"    value="/WEB-INF/jsp/tiles/default/noAccess.jsp" />            
+    </definition>
+    
+    <!-- Alumnooo -->
+	 <definition name="alumno" extends="defaultTemplate">            
+		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/alumno/body.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/alumno/panel.jsp" />
+    </definition>
+    
+    <!-- Profesor -->
+	 <definition name="profesor" extends="defaultTemplate">            
+		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/body.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/profesor/panel.jsp" />
+    </definition>
+    
+    <!-- Registro -->
+	 <definition name="registro" extends="defaultTemplate">            
+		<put-attribute name="body"    		value="/WEB-INF/jsp/registro/body.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/registro/panel.jsp" />
     </definition>
     
 </tiles-definitions>
