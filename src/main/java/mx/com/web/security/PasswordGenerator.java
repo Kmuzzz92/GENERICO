@@ -6,8 +6,6 @@ package mx.com.web.security;
  $LastChangedBy: $
  */
 import java.io.Serializable;
-import java.security.NoSuchAlgorithmException;
-
 
 public interface PasswordGenerator extends Serializable {
 

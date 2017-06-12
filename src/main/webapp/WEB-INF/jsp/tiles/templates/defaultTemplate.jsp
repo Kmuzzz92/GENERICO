@@ -23,8 +23,6 @@
 		<script type="text/javascript" src="${angular}"></script>
 		<script type="text/javascript" src="${route}"></script>
 		<link rel="stylesheet" type="text/css" href="${general_max}">
-		<put-list-attribute name="scripts">
-		</put-list-attribute>
 	</head>
 	<body>
 		<tiles:insertAttribute name="leftPanel"/>

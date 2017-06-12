@@ -1,5 +1,5 @@
-var app = angular.module("registro", ["ngRoute"]); 
+var app = angular.module("registroApp", []); 
 
-app.controller("ctrlRegistro", function($scope) {
-    
+app.config(function(){
+	this.URLRegistro="/GENERICO/registrar";
 });
