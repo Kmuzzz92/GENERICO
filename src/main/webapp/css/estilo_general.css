@@ -45,3 +45,16 @@ td{
 select{
 	width: 100%;
 }
+
+tbody tr{
+	cursor: pointer;
+}
+
+tbody tr:hover{
+	background-color: #BF4147 !important;
+}
+
+.selected{
+	background-color: #BF4147 !important;
+}
+}

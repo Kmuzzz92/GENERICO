@@ -7,18 +7,18 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
 	this.Enviar=function(){
 		$http({
             method: 'POST',
-            url: URLRegistro,
+            url: URLRegistroP,
             headers: { 'Content-type': 'application/x-www-form-urlencoded'},
             data: $httpParamSerializerJQLike({
                 registro: JSON.stringify(ctrl.Nuevo)
             })
         }).then(function (response) {
             if(response.data==="OK"){
-            	alert ("Alumno guardado");
+            	alert ("Profesor guardado");
             	location.href="/GENERICO/login";
             }
             else {
-            	alert ("No se guardo alumno");
+            	alert ("No se guardo profesor");
             }
         });
 	}

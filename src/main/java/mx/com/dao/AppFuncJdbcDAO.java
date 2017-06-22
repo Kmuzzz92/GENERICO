@@ -31,7 +31,7 @@ public class AppFuncJdbcDAO implements AppFuncDAO{
 
 	@Override
 	@Transactional
-	public boolean InsertUsuarioAlumno(Users users, UserRoles userRoles) {
+	public boolean InsertUsuario(Users users, UserRoles userRoles) {
 		try{
 			Map<String, Object> paramUser = new HashMap<String, Object>();
 			Map<String, Object> paramRole = new HashMap<String, Object>();
@@ -52,7 +52,7 @@ public class AppFuncJdbcDAO implements AppFuncDAO{
 	}
 
 	@Override
-	public void DeleteUsuarioAlumno(Users users, UserRoles userRoles) {
+	public void DeleteUsuario(Users users, UserRoles userRoles) {
 		try{
 			Map<String, Object> paramUser = new HashMap<String, Object>();
 			Map<String, Object> paramRole = new HashMap<String, Object>();

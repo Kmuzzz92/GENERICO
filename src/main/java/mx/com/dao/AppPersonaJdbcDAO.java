@@ -11,12 +11,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import mx.com.doo.Alumno;
+import mx.com.doo.Persona;
 
 @Repository
-public class AppAlumnoJdbcDAO implements AppAlumnoDAO {
+public class AppPersonaJdbcDAO implements AppPersonaDAO {
 
-	protected final static Logger log = LoggerFactory.getLogger(AppAlumnoJdbcDAO.class);
+	protected final static Logger log = LoggerFactory.getLogger(AppPersonaJdbcDAO.class);
 
 	@Autowired
 	private NamedParameterJdbcOperations jdbcTemplate;
@@ -27,19 +27,18 @@ public class AppAlumnoJdbcDAO implements AppAlumnoDAO {
 
 	@Override
 	@Transactional
-	public boolean InsertAlumno(Alumno alumno) {
+	public boolean InsertPersona(Persona persona) {
 		Map<String, Object> paramUser = new HashMap<String, Object>();
 		SimpleDateFormat fecha=new SimpleDateFormat("MM/dd/yyyy");
-		
-				try {
-			String sql = "INSERT INTO [plataforma].[dbo].[alumno] ([username],[email],[nombre],[paterno],[materno],[edad],[grupo]) VALUES (:username,:email,:nombre,:paterno,:materno,:edad,:grupo)";
-			paramUser.put("username", alumno.getUsername());
-			paramUser.put("email", alumno.getEmail());
-			paramUser.put("nombre", alumno.getNombre());
-			paramUser.put("paterno", alumno.getPaterno());
-			paramUser.put("materno", alumno.getMaterno());
-			paramUser.put("edad", fecha.format(alumno.getEdad()));
-			paramUser.put("grupo", "" + alumno.getGrupo());
+		try {
+			String sql = "INSERT INTO [plataforma].[dbo].[persona] ([username],[email],[nombre],[paterno],[materno],[edad],[grupo]) VALUES (:username,:email,:nombre,:paterno,:materno,:edad,:grupo)";
+			paramUser.put("username", persona.getUsername());
+			paramUser.put("email", persona.getEmail());
+			paramUser.put("nombre", persona.getNombre());
+			paramUser.put("paterno", persona.getPaterno());
+			paramUser.put("materno", persona.getMaterno());
+			paramUser.put("edad", fecha.format(persona.getEdad()));
+			paramUser.put("grupo", "" + persona.getGrupo());
 			jdbcTemplate.update(sql, paramUser);
 			return true;
 		} catch (Exception ex) {

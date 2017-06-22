@@ -17,13 +17,13 @@ public class AdminFuncServiceImpl implements AdminFuncService {
 	private AppFuncDAO funcDAO;
 
 	@Override
-	public boolean InsertAlumnoUser(Users users, UserRoles userRole) {
-		return funcDAO.InsertUsuarioAlumno(users, userRole);
+	public boolean InsertUser(Users users, UserRoles userRole) {
+		return funcDAO.InsertUsuario(users, userRole);
 	}
 
 	@Override
-	public void DeleteAlumnoUsers(Users users, UserRoles userRole) {
-		funcDAO.DeleteUsuarioAlumno(users, userRole);
+	public void DeleteUser(Users users, UserRoles userRole) {
+		funcDAO.DeleteUsuario(users, userRole);
 	}
 	
 }

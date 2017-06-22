@@ -37,9 +37,9 @@
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<label>Grupo:</label>
 			<select id="grupo" ng-model="ctrl.Nuevo.grupo">
-				<option value="1">A</option>
-				<option value="2">B</option>
-				<option value="3">C</option>
+				<c:forEach var="grupo" items="${grupos}">
+					<option value="${grupo.idGrupo}">${grupo.nombre}</option>
+				</c:forEach>
 			</select>
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12">
@@ -47,4 +47,5 @@
 		</div>
 	</div>		
 	<div class="col-lg-3 col-md-3 col-sm-0"></div>
+	
 </div>

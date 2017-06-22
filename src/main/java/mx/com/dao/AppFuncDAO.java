@@ -5,7 +5,7 @@ import mx.com.doo.Users;
 
 public interface AppFuncDAO {
 
-	public boolean InsertUsuarioAlumno(Users users, UserRoles userRoles);
+	public boolean InsertUsuario(Users users, UserRoles userRoles);
 	
-	public void DeleteUsuarioAlumno(Users users, UserRoles userRoles);
+	public void DeleteUsuario(Users users, UserRoles userRoles);
 }

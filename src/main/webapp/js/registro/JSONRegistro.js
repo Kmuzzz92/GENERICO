@@ -6,4 +6,5 @@ function JSONRegistro(){
 	this.materno="";
 	this.edad="";
 	this.grupo=0;
+	this.contrasena="";
 }

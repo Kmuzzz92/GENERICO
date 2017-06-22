@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Alumno {
+public class Persona {
 
 	@NotEmpty @Size(min=6,max=20)
 	private String username;
@@ -35,6 +35,15 @@ public class Alumno {
 	@NotNull @Min(0)
 	private int grupo;
 	
+	@NotEmpty @Size(min=6,max=20)
+	private String contrasena;
+	
+	public String getContrasena() {
+		return contrasena;
+	}
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -79,10 +88,10 @@ public class Alumno {
 	}
 	@Override
 	public String toString() {
-		return "Alumno [username=" + username + ", email=" + email + ", nombre=" + nombre + ", paterno=" + paterno
-				+ ", materno=" + materno + ", edad=" + edad + ", grupo=" + grupo + "]";
+		return "Persona [username=" + username + ", email=" + email + ", nombre=" + nombre + ", paterno=" + paterno
+				+ ", materno=" + materno + ", edad=" + edad + ", grupo=" + grupo + ", contraseña=" + contrasena + "]";
 	}
-
+	
 	
 }
 
