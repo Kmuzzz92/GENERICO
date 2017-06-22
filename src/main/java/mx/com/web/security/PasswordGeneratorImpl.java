@@ -12,6 +12,9 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This class represents the implementation of Password Generator Interface
@@ -22,6 +25,8 @@ import org.apache.log4j.Logger;
  * 
  */
 
+@Service
+@Transactional(readOnly=true)
 public class PasswordGeneratorImpl implements PasswordGenerator {
 
 	/**
@@ -106,4 +111,8 @@ public class PasswordGeneratorImpl implements PasswordGenerator {
 		return sb.toString();
 	}
 
+	public String Generate(String nuePass){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder.encode(nuePass);
+	}
 }

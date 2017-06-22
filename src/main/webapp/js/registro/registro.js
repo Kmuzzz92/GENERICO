@@ -10,10 +10,16 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
             url: URLRegistro,
             headers: { 'Content-type': 'application/x-www-form-urlencoded'},
             data: $httpParamSerializerJQLike({
-                n: JSON.stringify(ctrl.Nuevo)
+                registro: JSON.stringify(ctrl.Nuevo)
             })
         }).then(function (response) {
-            console.log(reponse);               
+            if(response.data==="OK"){
+            	alert ("Alumno guardado");
+            	location.href="/GENERICO/login";
+            }
+            else {
+            	alert ("No se guardo alumno")
+            }
         });
 	}
 });

@@ -36,10 +36,10 @@
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<label>Grupo:</label>
-			<select id="grupo" ng-bind="ctrl.Nuevo.grupo">
-				<option>A</option>
-				<option>B</option>
-				<option>C</option>
+			<select id="grupo" ng-model="ctrl.Nuevo.grupo">
+				<option value="1">A</option>
+				<option value="2">B</option>
+				<option value="3">C</option>
 			</select>
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12">

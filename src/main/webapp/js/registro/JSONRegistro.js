@@ -5,5 +5,5 @@ function JSONRegistro(){
 	this.paterno="";
 	this.materno="";
 	this.edad="";
-	this.grupo="";
+	this.grupo=0;
 }

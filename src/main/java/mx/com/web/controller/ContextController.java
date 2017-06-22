@@ -28,14 +28,4 @@ public class ContextController {
 	public String accesssDenied() {
 		return "403";
 	}
-	
-	@RequestMapping(value="/registro", method = RequestMethod.GET)
-	public String regitro(){
-		return "registro";
-	}
-	
-	@RequestMapping(value="/registrar", method = RequestMethod.POST)
-	public String regitrar(ModelAndView model){
-		return "registro";
-	}
 }
