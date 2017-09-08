@@ -26,5 +26,13 @@ public class GrupoServiceImpl implements GrupoService{
 	public Grupo getById(int idGrupo) {
 		return grupoDAO.getById(idGrupo);
 	}
+	
+	public  boolean insertGrupo(Grupo grupo){
+		return grupoDAO.insertGrupo(grupo);
+	}
+	
+	public boolean deleteGrupo(Grupo grupo){
+		return grupoDAO.deleteGrupo(grupo);
+	}
 
 }

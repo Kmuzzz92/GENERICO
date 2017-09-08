@@ -1,6 +1,7 @@
 package mx.com.web.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import mx.com.doo.Persona;
@@ -117,6 +119,30 @@ public class RegistroController {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("respuesta");
 		model.addObject("respuesta", estatus);
+		return model;
+	}
+	
+	@RequestMapping(value="/admin/profesores", method = RequestMethod.POST)
+	public ModelAndView getProfesores(){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("respuesta");
+		List<Persona> personas = personaService.getPersonas(ROLE_PROFE);
+		if(personas.size()>0){
+			String [][] tmpPersonas = new String[2][personas.size()];
+			for(int i=0;i<personas.size();i++){
+				tmpPersonas[0][i] = personas.get(i).getUsername();
+				tmpPersonas[1][i] = personas.get(i).getPaterno()+ " "+personas.get(i).getMaterno()+" "+personas.get(i).getNombre();
+			}
+			ObjectMapper mapper = new ObjectMapper();
+			try {
+				model.addObject("respuesta", mapper.writeValueAsString(tmpPersonas));
+			} catch (JsonProcessingException e) {
+				log.error(e.toString());
+				model.addObject("respuesta", "[]");
+			}
+		}else{
+			model.addObject("respuesta", "[]");
+		}
 		return model;
 	}
 }

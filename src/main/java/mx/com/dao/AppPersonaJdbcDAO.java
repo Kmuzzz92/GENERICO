@@ -2,11 +2,13 @@ package mx.com.dao;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +26,7 @@ public class AppPersonaJdbcDAO implements AppPersonaDAO {
 	public void setJdbcTemplate(NamedParameterJdbcOperations jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
+	
 	@Override
 	@Transactional
 	public boolean InsertPersona(Persona persona) {
@@ -47,4 +49,34 @@ public class AppPersonaJdbcDAO implements AppPersonaDAO {
 		}
 	}
 
+	@Override
+	public List<Persona> getPersonas(String tipo) {
+		Map<String, Object> paramUser = new HashMap<String, Object>();
+		try{
+			log.info(tipo);
+			String sql = "SELECT per.* FROM [plataforma].[dbo].[user_roles] AS UR INNER JOIN [plataforma].[dbo].[persona] as per ON (per.username=UR.username) WHERE UR.role = :role";
+			paramUser.put("role",tipo);
+			List<Persona> personas = jdbcTemplate.query(sql,paramUser,new BeanPropertyRowMapper<Persona>(Persona.class));
+			return personas;
+		}catch(Exception ex){
+			log.error(ex.toString());
+			return null;
+		}
+	}
+
+	@Override
+	public int getIdByUsername(String username){
+		Map<String, Object> paramUser = new HashMap<String, Object>();
+		try{
+			log.info("Get Persona: "+username);
+			String sql = "SELECT id FROM [plataforma].[dbo].[persona] WHERE username=:username";
+			paramUser.put("username",username);
+			int persona = jdbcTemplate.queryForObject(sql, paramUser,Integer.class);
+			return persona;
+		}catch(Exception ex){
+			log.error(ex.toString());
+			return -1;
+		}
+	}
+	
 }

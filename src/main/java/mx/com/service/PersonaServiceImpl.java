@@ -1,5 +1,7 @@
 package mx.com.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +20,15 @@ public class PersonaServiceImpl implements PersonaService  {
 	@Override
 	public boolean InsertPersona(Persona persona) {
 		return alumnoDAO.InsertPersona(persona);
+	}
+	
+	@Override
+	public List<Persona> getPersonas(String tipo){
+		return alumnoDAO.getPersonas(tipo);
+	}
+
+	@Override
+	public int getIdUsername(String username) {
+		return alumnoDAO.getIdByUsername(username);
 	}
 }

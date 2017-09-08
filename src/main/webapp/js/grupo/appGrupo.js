@@ -5,4 +5,6 @@ app.config(function(){
 	this.URLEliminar="/GENERICO/admin/grupo/eliminar";
 	this.URLGrupo="/GENERICO/admin/grupo";
 	this.URLGrupos="/GENERICO/admin/grupos";
+	this.URLProfesores="/GENERICO/admin/profesores";
+	this.URLProfesoresAsig="/GENERICO/admin/asignaProfesor";
 });

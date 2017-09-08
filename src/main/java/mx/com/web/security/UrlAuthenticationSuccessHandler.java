@@ -55,6 +55,8 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
     		return "/alumno";
     	}else if(permisos.contains("ROLE_PROFE")){
     		return "/profesor";
+    	}else if(permisos.contains("ROLE_ADMIN")){
+    		return "/admin";
     	}else{
     		return "/403";
     	}

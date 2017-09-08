@@ -10,4 +10,7 @@ public interface GrupoService {
 	
 	public Grupo getById(int idGrupo);
 	
+	public boolean insertGrupo (Grupo grupo);
+	
+	public boolean deleteGrupo(Grupo grupo);
 }

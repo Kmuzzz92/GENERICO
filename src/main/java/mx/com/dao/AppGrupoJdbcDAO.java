@@ -27,7 +27,7 @@ public class AppGrupoJdbcDAO implements AppGrupoDAO{
 
 	@Override
 	public List<Grupo> getAllGrupos() {
-		String sql = "SELECT [idGrupo],[nombre] FROM [plataforma].[dbo].[grupo] WHERE idGrupo!=1";
+		String sql = "SELECT [idGrupo],[nombre],[profesor] FROM [plataforma].[dbo].[grupo] WHERE idGrupo!=1";
 		List<Grupo> grupos = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Grupo>(Grupo.class));
 		return grupos;
 	}
@@ -35,9 +35,42 @@ public class AppGrupoJdbcDAO implements AppGrupoDAO{
 	@Override
 	public Grupo getById(int idGrupo) {
 		Map<String, Object> param = new HashMap<String, Object>();
-		String sql = "SELECT [idGrupo],[nombre] FROM [plataforma].[dbo].[grupo] WHERE idGrupo=:idGrupo";
+		String sql = "SELECT [idGrupo],[nombre],[profesor] FROM [plataforma].[dbo].[grupo] WHERE idGrupo=:idGrupo";
 		param.put("idGrupo", idGrupo);
 		return jdbcTemplate.queryForObject(sql, param, new BeanPropertyRowMapper<>(Grupo.class));
 	}
-
+	
+	@Override
+	public boolean insertGrupo (Grupo grupo){
+		Map<String, Object> paramUser = new HashMap<String, Object>();
+		try{
+			String sql  = "INSERT INTO [plataforma].[dbo].[grupo]([nombre],[profesor]) VALUES (:nombre,:profesor)";
+			String sql1 = "UPDATE [plataforma].[dbo].[grupo]SET [nombre] = :nombre, [profesor]=:profesor  WHERE idGrupo=:idGrupo ";
+			paramUser.put("nombre",grupo.getNombre());
+			paramUser.put("profesor", grupo.getProfesor());
+			if(grupo.getIdGrupo() != 0){
+				paramUser.put("idGrupo",grupo.getIdGrupo());
+				sql=sql1;
+			}
+			jdbcTemplate.update(sql, paramUser);
+			return true; 
+		} catch (Exception ex) {
+			log.error(ex.toString());
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean deleteGrupo( Grupo grupo){
+		Map<String, Object> paramUser = new HashMap<String, Object>();
+		try{
+			String sql = "DELETE FROM [plataforma].[dbo].[grupo] WHERE idGrupo = :idGrupo";
+			paramUser.put("idGrupo", grupo.getIdGrupo());
+			jdbcTemplate.update(sql, paramUser);
+			return true;
+		}catch (Exception ex) {
+			log.error(ex.toString());
+			return false;
+		}
+	}
 }

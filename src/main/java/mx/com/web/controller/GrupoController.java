@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import mx.com.doo.Grupo;
 import mx.com.service.GrupoService;
+import mx.com.service.PersonaService;
 
 @Controller
 public class GrupoController {
@@ -23,6 +24,9 @@ public class GrupoController {
 	
 	@Inject
 	private GrupoService grupoService;
+	
+	@Inject
+	private PersonaService personaService;
 	
 	@RequestMapping(value="/admin/grupos",method=RequestMethod.GET)
 	public ModelAndView grupos(){
@@ -57,4 +61,79 @@ public class GrupoController {
 		}
 		return model;
 	}
+	
+	@RequestMapping(value="/admin/grupo/registrar",method=RequestMethod.POST)
+	public ModelAndView agregarGrupo(@RequestParam(value="registro", required = true) String registro){
+		ModelAndView model = new ModelAndView();
+		ObjectMapper mapper = new ObjectMapper();
+		Grupo gru = null;
+		String estatus ="OK";
+		
+		try{
+			gru = mapper.readValue(registro, Grupo.class);
+			log.info(gru.toString());
+			boolean ret = grupoService.insertGrupo(gru);
+			if(ret){
+				estatus = "OK";
+			}
+			else{
+				estatus = "Grupo no guardado";
+			}
+		}
+		catch(Exception ex){
+			log.error(ex.toString());
+		}
+		
+		model.setViewName("respuesta");
+		model.addObject("respuesta", estatus);
+		return model;
+	}
+	
+	@RequestMapping(value="/admin/grupo/eliminar",method=RequestMethod.POST)
+	public ModelAndView deleteGrupo(@RequestParam(value="grupo", required = true) String grupo){
+		ModelAndView model = new ModelAndView();
+		Grupo gru = new Grupo();
+		gru.setIdGrupo(Integer.parseInt(grupo));
+		gru.setNombre("");
+		String estatus ="OK";
+		
+		try{
+			boolean ret = grupoService.deleteGrupo(gru);
+			if(ret){
+				estatus = "OK";
+			}
+			else{
+				estatus = "Grupo no eliminado";
+			}
+		}
+		catch(Exception ex){
+			log.error(ex.toString());
+		}
+		
+		model.setViewName("respuesta");
+		model.addObject("respuesta", estatus);
+		return model;
+	}
+	
+	
+	@RequestMapping(value="/admin/asignaProfesor",method=RequestMethod.POST)
+	public ModelAndView asignaProfesor(@RequestParam(value="idGrupo", required = true)  int grupo, @RequestParam(value="profesor", required = true) String profesor){
+		ModelAndView model = new ModelAndView();
+		Grupo gru = grupoService.getById(grupo);
+		gru.setProfesor(personaService.getIdUsername(profesor));
+		String estatus ="OK";
+		try{
+			boolean ret = grupoService.insertGrupo(gru);
+			if(ret)
+				estatus="Se asigno correctamente el profesor";
+			else
+				estatus="No se pudo asignar correctamente el profesor";
+		}
+		catch(Exception ex){
+			log.error(ex.toString());
+		}
+		model.setViewName("respuesta");
+		model.addObject("respuesta", estatus);
+		return model;
+	}	
 }

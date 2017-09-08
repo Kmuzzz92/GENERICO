@@ -32,13 +32,40 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-12">
+	<div class="col-lg-3 col-md-3 col-sm-6">
 		<button class="btn btn-success" ng-click="ctrl.Agregar()">Agregar</button>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-12">
+	<div class="col-lg-3 col-md-3 col-sm-6">
 		<button class="btn btn-primary" ng-click="ctrl.Editar()">Editar</button>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-12">
-			<button class="btn btn-danger" ng-click="ctrl.Eliminar()">Eliminar</button>
+	<div class="col-lg-3 col-md-3 col-sm-6">
+		<button class="btn btn-danger" ng-click="ctrl.Eliminar()">Eliminar</button>
 	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6">
+		<button class="btn btn-info" ng-click="ctrl.AsignarGrupo()">Asignar Profesor</button>
+	</div>
+	<!-- Modal -->
+  <div class="modal fade" id="asignar" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{ctrl.grupoAsignar.nombre}}</h4>
+        </div>
+        <div class="modal-body">
+          <p><label>Elija un Profesor: </label>
+          <select ng-model="ctrl.grupoAsignar.idProfesor">
+          	<option ng-repeat="profe in ctrl.profesores" value="{{profe.users}}">{{profe.nombre}}</option>
+          </select></p>
+        </div>
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-default" ng-click="ctrl.asignar();">Asignar</button>
+          	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
