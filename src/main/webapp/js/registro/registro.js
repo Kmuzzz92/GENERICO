@@ -15,11 +15,30 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
         }).then(function (response) {
             if(response.data==="OK"){
             	alert ("Alumno guardado");
-            	location.href="/GENERICO/login";
+            	window.history.back();
             }
             else {
             	alert ("No se guardo alumno");
             }
         });
 	}
+	
+	this.Fill=function(){
+		if(!jQuery.isEmptyObject(alumno)){
+			ctrl.Nuevo.id=alumno.id;
+			ctrl.Nuevo.username=alumno.username;
+			ctrl.Nuevo.email=alumno.email;
+			ctrl.Nuevo.nombre=alumno.nombre;
+			ctrl.Nuevo.paterno=alumno.paterno;
+			ctrl.Nuevo.materno=alumno.materno;
+			ctrl.Nuevo.edad=new Date(alumno.edad);
+			ctrl.Nuevo.grupo=alumno.grupo;
+		}
+	}
+	
+	this.Cancelar=function(){
+		window.history.back();
+	}
+	
+	this.Fill();
 });

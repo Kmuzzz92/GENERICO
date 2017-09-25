@@ -4,6 +4,20 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
 	
 	ctrl.Nuevo = new JSONRegistro();
 		
+	this.Fill=function(){
+		if(!jQuery.isEmptyObject(profesor)){
+			ctrl.Nuevo.id=profesor.id;
+			ctrl.Nuevo.username=profesor.username;
+			ctrl.Nuevo.email=profesor.email;
+			ctrl.Nuevo.nombre=profesor.nombre;
+			ctrl.Nuevo.paterno=profesor.paterno;
+			ctrl.Nuevo.materno=profesor.materno;
+			ctrl.Nuevo.edad=new Date(profesor.edad);
+			ctrl.Nuevo.grupo=profesor.grupo;
+			ctrl.Nuevo.contrasena="";
+		}
+	}
+	
 	this.Enviar=function(){
 		$http({
             method: 'POST',
@@ -15,11 +29,17 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
         }).then(function (response) {
             if(response.data==="OK"){
             	alert ("Profesor guardado");
-            	location.href="/GENERICO/login";
+            	window.history.back();
             }
             else {
             	alert ("No se guardo profesor");
             }
         });
 	}
+	
+	this.Cancelar=function(){
+		window.history.back();
+	}
+	
+	this.Fill();
 });

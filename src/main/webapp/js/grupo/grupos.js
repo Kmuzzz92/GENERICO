@@ -91,6 +91,10 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
 		});
 	}
 	
+	this.GetGrupos=function(){
+		location.href=URLGrupos;
+	}
+	
 	this.asignar=function(){
 		if(ctrl.grupoAsignar.idGrupo!==0 && ctrl.grupoAsignar.idProfesor!==0){
 			$http({
@@ -105,6 +109,7 @@ app.controller("myCtrl", function($scope,$http,$httpParamSerializerJQLike) {
 				})
 			}).then(function(response) {
 				alert(response.data);
+				ctrl.GetGrupos();
 				$("#asignar").modal('hide');
 			}).catch(function(response){
 				alert(response);

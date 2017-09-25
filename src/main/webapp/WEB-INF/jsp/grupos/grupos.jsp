@@ -22,12 +22,14 @@
 				<tr>
 					<th>ID</th>
 					<th>Nombre</th>
+					<th>Profesor</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="grupo in ctrl.grupos" ng-click="ctrl.selected(grupo.idGrupo);" ng-class="{selected: grupo.idGrupo === ctrl.select}">
 					<td>{{grupo.idGrupo}}</td>
 					<td>{{grupo.nombre}}</td>
+					<td>{{grupo.aux}}</td>
 				</tr>
 			</tbody>
 		</table>

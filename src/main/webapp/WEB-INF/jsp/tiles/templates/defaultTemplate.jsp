@@ -27,8 +27,10 @@
 		<link rel="stylesheet" type="text/css" href="${general_max}">
 	</head>
 	<body>
+		<tiles:insertAttribute name="menu" />
 		<tiles:insertAttribute name="leftPanel"/>
 		<tiles:insertAttribute name="body" />
+		
 	</body>
 </html>
 

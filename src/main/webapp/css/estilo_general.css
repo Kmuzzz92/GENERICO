@@ -1,60 +1,70 @@
 @CHARSET "ISO-8859-1";
 
-body{
-	
+body {
 	background: url('../img/tabletmate2.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-	color:#000;
-  	background-color:#333;
-  	font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #000;
+	background-color: #333;
+	font-family: 'Open Sans', Arial, Helvetica, Sans-Serif;
 }
 
 .panel-default {
-opacity: 0.9;
-margin-top:30px;
+	opacity: 0.9;
+	margin-top: 30px;
 }
-.form-group.last { margin-bottom:0px; }
+
+.form-group.last {
+	margin-bottom: 0px;
+}
 
 a:link, a:visited {
-	color:#eee;
+	color: #eee;
 }
 
-.jumbotron{
+.jumbotron {
 	background-color: #fff;
 	color: #FFFF;
 }
 
-.btn-lg{
+.btn-lg {
 	width: 100%;
 	background-color: #2427ac;
 	color: #fff;
 	margin-top: 2em;
 }
 
-td{
+td {
 	width: 80%;
 }
 
-.registro{
-	background-color: rgba(255,255,255,0.5);
+.registro {
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
-select{
+select {
 	width: 100%;
 }
 
-tbody tr{
+tbody tr {
 	cursor: pointer;
 }
 
-tbody tr:hover{
+tbody tr:hover {
 	background-color: #BF4147 !important;
 }
 
-.selected{
+.selected {
 	background-color: #BF4147 !important;
 }
+
+.nav-tabs>li>a:hover {
+	border-color: #fff #fff #ff;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
 }

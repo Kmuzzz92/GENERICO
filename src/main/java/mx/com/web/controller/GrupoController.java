@@ -1,5 +1,7 @@
 package mx.com.web.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import mx.com.doo.Grupo;
+import mx.com.doo.Persona;
 import mx.com.service.GrupoService;
 import mx.com.service.PersonaService;
 
@@ -34,7 +37,14 @@ public class GrupoController {
 		ObjectMapper mapper = new ObjectMapper();
 		model.setViewName("grupos");
 		try {
-			model.addObject("gruposLista", mapper.writeValueAsString(grupoService.getAllGrupos()));
+			List<Grupo> grupos = grupoService.getAllGrupos();
+			for(int i=0;i<grupos.size();i++){
+				if(grupos.get(i).getProfesor()>0){
+					Persona per = personaService.getPersonasById(grupos.get(i).getProfesor());
+					grupos.get(i).setAux(per.getNombre()+" "+per.getPaterno()+" "+per.getMaterno());
+				}
+			}
+			model.addObject("gruposLista", mapper.writeValueAsString(grupos));
 		} catch (JsonProcessingException e) {
 			log.error(e.toString());
 		}

@@ -15,20 +15,30 @@ import mx.com.doo.Persona;
 public class PersonaServiceImpl implements PersonaService  {
 	
 	@Inject
-	private AppPersonaDAO alumnoDAO;
+	private AppPersonaDAO personaDAO;
 
 	@Override
 	public boolean InsertPersona(Persona persona) {
-		return alumnoDAO.InsertPersona(persona);
+		return personaDAO.InsertPersona(persona);
 	}
 	
 	@Override
 	public List<Persona> getPersonas(String tipo){
-		return alumnoDAO.getPersonas(tipo);
+		return personaDAO.getPersonas(tipo);
 	}
 
 	@Override
 	public int getIdUsername(String username) {
-		return alumnoDAO.getIdByUsername(username);
+		return personaDAO.getIdByUsername(username);
+	}
+
+	@Override
+	public Persona getPersonasById(int id) {
+		return personaDAO.getPersonasById(id);
+	}
+
+	@Override
+	public boolean UpdatePersona(Persona persona) {
+		return personaDAO.UpdatePersona(persona);
 	}
 }

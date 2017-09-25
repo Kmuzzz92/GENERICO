@@ -6,12 +6,18 @@
 <c:url value="/js/registro/registroP.js" var="ctrl" />
 <c:url value="/js/registro/JSONRegistro.js" var="json" />
 
+<script type="text/javascript">
+	
+	var profesor=${profesor};
+</script>
+
 <script type="text/javascript" src="${app}"></script>
 <script type="text/javascript" src="${ctrl}"></script>
 <script type="text/javascript" src="${json}"></script>
 
-<div class="container registro" ng-app="registroApp"
-	ng-controller="myCtrl as ctrl">
+
+
+<div class="container registro" ng-app="registroApp" ng-controller="myCtrl as ctrl">
 	<div class="jumbotron">
 		<h1>Registro Profesor</h1>
 	</div>
@@ -19,7 +25,7 @@
 	<div class="col-lg-6 col-md-6 col-sm-12">
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<label>Username:</label><input type="text" maxlength="20"
-				ng-model="ctrl.Nuevo.username" />
+				ng-model="ctrl.Nuevo.username" ng-disabled="{{ctrl.Nuevo.id!==0}}"/>
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<label>Contraseña:</label><input type="password" maxlength="30"
@@ -47,7 +53,12 @@
 		</div>
 	</div>
 	<div class="col-lg-12 col-md-12 col-sm-12">
-		<button class="btn btn-success" ng-click="ctrl.Enviar()">Registrar</button>
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<button class="btn btn-success" ng-click="ctrl.Enviar()">Agregar</button>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<button class="btn btn-danger" ng-click="ctrl.Cancelar()">Cancelar</button>
+		</div>
 	</div>
 </div>
 <div class="col-lg-3 col-md-3 col-sm-0"></div>

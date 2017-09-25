@@ -25,5 +25,15 @@ public class AdminFuncServiceImpl implements AdminFuncService {
 	public void DeleteUser(Users users, UserRoles userRole) {
 		funcDAO.DeleteUsuario(users, userRole);
 	}
+
+	@Override
+	public void ActivarUsuario(String user) {
+		funcDAO.ActivarUsuario(user);
+	}
+
+	@Override
+	public void DesactivarUsuario(String user) {
+		funcDAO.DesactivarUsuario(user);
+	}
 	
 }

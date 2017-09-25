@@ -9,4 +9,7 @@ public interface AdminFuncService {
 	
 	public void DeleteUser(Users users,UserRoles userRole);
 	
+	public void ActivarUsuario(String user);
+	
+	public void DesactivarUsuario(String user);	
 }

@@ -12,4 +12,8 @@ public interface AppPersonaDAO {
 	
 	public int getIdByUsername(String username);
 	
+	public Persona getPersonasById(int id);
+	
+	public boolean UpdatePersona(Persona persona);
+	
 }

@@ -6,6 +6,9 @@
 <c:url value="/js/registro/registro.js" var="ctrl" />
 <c:url value="/js/registro/JSONRegistro.js" var="json" />
 
+<script type="text/javascript">
+var alumno = ${alumno};
+</script>
 <script type="text/javascript" src="${app}"></script>
 <script type="text/javascript" src="${ctrl}"></script>
 <script type="text/javascript" src="${json}"></script>
@@ -17,7 +20,7 @@
 	<div class="col-lg-3 col-md-3 col-sm-0"></div>
 	<div class="col-lg-6 col-md-6 col-sm-12">
 		<div class="col-lg-12 col-md-12 col-sm-12">
-			<label>Username:</label><input type="text" maxlength="20" ng-model="ctrl.Nuevo.username"/>
+			<label>Username:</label><input type="text" maxlength="20" ng-model="ctrl.Nuevo.username" ng-disabled="{{ctrl.Nuevo.id!==0}}"/>
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<label>E-mail:</label><input type="email" maxlength="100" ng-model="ctrl.Nuevo.email"/>
@@ -44,6 +47,9 @@
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<button class="btn btn-success" ng-click="ctrl.Enviar()">Registrar</button>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<button class="btn btn-success" ng-click="ctrl.Cancelar()">Cancelar</button>
 		</div>
 	</div>		
 	<div class="col-lg-3 col-md-3 col-sm-0"></div>

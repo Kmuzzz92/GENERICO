@@ -16,6 +16,18 @@ public class Grupo {
 	@NotEmpty
 	private int profesor;
 		
+	private String aux;
+	
+	
+	
+	public String getAux() {
+		return aux;
+	}
+
+	public void setAux(String aux) {
+		this.aux = aux;
+	}
+
 	public int getProfesor() {
 		return profesor;
 	}
@@ -42,6 +54,6 @@ public class Grupo {
 
 	@Override
 	public String toString() {
-		return "Grupo [idGrupo=" + idGrupo + ", nombre=" + nombre + ", profesor=" + profesor + "]";
+		return "Grupo [idGrupo=" + idGrupo + ", nombre=" + nombre + ", profesor=" + profesor + ", aux=" + aux + "]";
 	}
 }

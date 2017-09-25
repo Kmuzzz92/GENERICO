@@ -68,6 +68,31 @@ public class AppFuncJdbcDAO implements AppFuncDAO{
 		}catch(Exception ex){
 			log.error(ex.toString());
 		}
-		
+	}
+
+	@Override
+	public void ActivarUsuario(String user) {
+		try{
+			Map<String, Object> paramUser = new HashMap<String, Object>();
+			String sqlUser = "UPDATE [plataforma].[dbo].[users] SET [enabled] = :enabled WHERE username=:username";
+			paramUser.put("username", user);
+			paramUser.put("enabled", 1);
+			jdbcTemplate.update(sqlUser,paramUser);
+		}catch(Exception ex){
+			log.error(ex.toString());
+		}
+	}
+
+	@Override
+	public void DesactivarUsuario(String user) {
+		try{
+			Map<String, Object> paramUser = new HashMap<String, Object>();
+			String sqlUser = "UPDATE [plataforma].[dbo].[users] SET [enabled] = :enabled WHERE username=:username";
+			paramUser.put("username", user);
+			paramUser.put("enabled", 0);
+			jdbcTemplate.update(sqlUser,paramUser);
+		}catch(Exception ex){
+			log.error(ex.toString());
+		}
 	}
 }
