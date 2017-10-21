@@ -106,9 +106,5 @@
 		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/examenes.jsp" />
 		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
     </definition>
-    
-    <definition name="respuesta" template="/WEB-INF/jsp/tiles/default/respuesta.jsp">
-    
-    </definition>
-    
+        
 </tiles-definitions>

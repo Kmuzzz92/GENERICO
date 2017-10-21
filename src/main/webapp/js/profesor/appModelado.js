@@ -1,4 +1,5 @@
-var app = angular.module("modeladoApp", []); 
+var app = angular.module("profesorApp", []); 
 
 app.config(function(){
+	this.URLExamen="/GENERICO/profesor/examenes/examen";
 });

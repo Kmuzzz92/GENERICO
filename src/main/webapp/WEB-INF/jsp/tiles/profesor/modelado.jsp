@@ -6,13 +6,17 @@
 <c:url value="/js/profesor/modelado.js" var="ctrl" />
 
 <script type="text/javascript">
-	var personas = ${alumnos};
+	var examen = ${examen};
 </script>
 <script type="text/javascript" src="${app}"></script>
 <script type="text/javascript" src="${ctrl}"></script>
 
-<div class="container">
-<div class="jumbotron">
-	<h1>Examen</h1>
-</div>
+<div class="container registro" ng-app="gruposApp" ng-controller="modeladoCtrl as ctrl">
+	<div class="jumbotron">
+		<h1>Examen</h1>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">Nombre: <input type="text" ng-model="ctrl.examen.nombre"></div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>
 </div>
