@@ -73,4 +73,12 @@ public class AppGrupoJdbcDAO implements AppGrupoDAO{
 			return false;
 		}
 	}
+
+	@Override
+	public List<Grupo> getAllGruposByProfesor(int idProfesor) {
+		Map<String, Object> param = new HashMap<String,Object>();
+		String sql ="SELECT * FROM [plataforma].[dbo].[grupo] where profesor=:profesor";
+		param.put("profesor",idProfesor);
+		return jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<Grupo>(Grupo.class));
+	}
 }

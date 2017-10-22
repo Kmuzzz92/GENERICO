@@ -35,4 +35,9 @@ public class GrupoServiceImpl implements GrupoService{
 		return grupoDAO.deleteGrupo(grupo);
 	}
 
+	@Override
+	public List<Grupo> getAllGruposByProfesor(int idProfesor) {
+		return grupoDAO.getAllGruposByProfesor(idProfesor);
+	}
+
 }

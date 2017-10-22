@@ -115,4 +115,20 @@ public class AppPersonaJdbcDAO implements AppPersonaDAO {
 			return false;
 		}
 	}
+
+	@Override
+	public List<Persona> getPersonas(String tipo, int idGrupo) {
+		Map<String, Object> paramUser = new HashMap<String, Object>();
+		try {
+			log.info(tipo);
+			String sql = "SELECT per.* FROM [plataforma].[dbo].[user_roles] AS UR INNER JOIN [plataforma].[dbo].[persona] as per ON (per.username=UR.username AND per.grupo=:grupo) WHERE UR.role = :role";
+			paramUser.put("role", tipo);
+			paramUser.put("grupo", idGrupo);
+			List<Persona> personas = jdbcTemplate.query(sql, paramUser,new BeanPropertyRowMapper<Persona>(Persona.class));
+			return personas;
+		} catch (Exception ex) {
+			log.error(ex.toString());
+			return null;
+		}
+	}
 }

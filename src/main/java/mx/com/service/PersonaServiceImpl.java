@@ -41,4 +41,9 @@ public class PersonaServiceImpl implements PersonaService  {
 	public boolean UpdatePersona(Persona persona) {
 		return personaDAO.UpdatePersona(persona);
 	}
+
+	@Override
+	public List<Persona> getPersonas(String tipo, int idGrupo) {
+		return personaDAO.getPersonas(tipo, idGrupo);
+	}
 }

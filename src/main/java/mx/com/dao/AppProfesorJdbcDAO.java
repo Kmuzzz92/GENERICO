@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import mx.com.doo.Examenes;
 import mx.com.doo.Preguntas;
 import mx.com.doo.Respuestas;
+import mx.com.doo.Respuestas_x_alumno;
 import mx.com.doo.tema;
 
 @Repository
@@ -37,16 +38,18 @@ public class AppProfesorJdbcDAO implements AppProfesorDAO{
 
 
 	@Override
-	public List<Examenes> getAllExamenes() {
-		String sql = "SELECT [idExamen],[nombre],[descripcion],[usuario],[activo],[fecha_creacion] FROM [plataforma].[dbo].[examenes]";
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Examenes.class));
+	public List<Examenes> getAllExamenesByUsuario(String usuario) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		String sql = "SELECT [idExamen],[nombre],[usuario],[fecha_creacion] FROM [plataforma].[dbo].[examenes] WHERE usuario=:usuario";
+		param.put("usuario",usuario);
+		return jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<>(Examenes.class));
 	}
 
 
 	@Override
 	public Examenes getExamenById(int idExamen) {
 		Map<String, Object> param = new HashMap<String, Object>();
-		String sql = "SELECT [idExamen],[nombre],[descripcion],[usuario],[activo],[fecha_creacion] FROM [plataforma].[dbo].[examenes] where idExamen=:idExamen";
+		String sql = "SELECT [idExamen],[nombre],[usuario],[fecha_creacion] FROM [plataforma].[dbo].[examenes] where idExamen=:idExamen";
 		param.put("idExamen", idExamen);
 		return jdbcTemplate.queryForObject(sql, param, new BeanPropertyRowMapper<>(Examenes.class));
 	}
@@ -128,5 +131,29 @@ public class AppProfesorJdbcDAO implements AppProfesorDAO{
 		}
 		return ret;
 	}
+
+
+	@Override
+	public List<Respuestas_x_alumno> getRespuestasXAlumnoByExamen(int idExamen) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		String sql = "SELECT [idRespuesta_alumno],[idExamen],[idPregunta],[idRespuesta],[fecha_respuesta],[usuario] FROM [plataforma].[dbo].[respuestas_x_alumnos] WHERE idExamen=:idExamen";
+		param.put("idExamen",idExamen);
+		return jdbcTemplate.query(sql, param,new BeanPropertyRowMapper<>(Respuestas_x_alumno.class));
+	}
 	
+	@Override
+	public Preguntas getPreguntaById(long idPregunta){
+		Map<String, Object> param = new HashMap<String, Object>();
+		String sql = "SELECT * FROM [plataforma].[dbo].[preguntas] WHERE idPregunta=:idPregunta";
+		param.put("idPregunta",idPregunta);
+		return jdbcTemplate.queryForObject(sql, param,new BeanPropertyRowMapper<>(Preguntas.class));
+	}
+
+	@Override
+	public Respuestas getRespuestaById(long idRespuesta) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		String sql = "SELECT * FROM [plataforma].[dbo].[respuestas] WHERE idRespuesta=:idRespuesta";
+		param.put("idRespuesta",idRespuesta);
+		return jdbcTemplate.queryForObject(sql, param,new BeanPropertyRowMapper<>(Respuestas.class));
+	}
 }

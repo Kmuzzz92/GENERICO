@@ -13,4 +13,6 @@ public interface GrupoService {
 	public boolean insertGrupo (Grupo grupo);
 	
 	public boolean deleteGrupo(Grupo grupo);
+	
+	public List<Grupo> getAllGruposByProfesor(int idProfesor);
 }

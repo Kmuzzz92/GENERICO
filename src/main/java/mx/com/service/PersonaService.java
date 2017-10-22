@@ -15,4 +15,6 @@ public interface PersonaService{
 	public Persona getPersonasById(int id);
 	
 	public boolean UpdatePersona(Persona persona);
+	
+	public List<Persona> getPersonas(String tipo, int idGrupo);
 }

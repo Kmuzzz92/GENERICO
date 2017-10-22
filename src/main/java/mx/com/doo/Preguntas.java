@@ -27,7 +27,6 @@ public class Preguntas{
 	@NotEmpty
 	private Respuestas respuestas[];
 	
-	
 	public Respuestas[] getRespuestas() {
 		return respuestas;
 	}

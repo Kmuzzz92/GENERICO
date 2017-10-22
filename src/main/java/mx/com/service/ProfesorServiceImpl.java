@@ -11,6 +11,7 @@ import mx.com.dao.AppProfesorDAO;
 import mx.com.doo.Examenes;
 import mx.com.doo.Preguntas;
 import mx.com.doo.Respuestas;
+import mx.com.doo.Respuestas_x_alumno;
 import mx.com.doo.tema;
 
 @Service
@@ -21,8 +22,8 @@ public class ProfesorServiceImpl implements ProfesorService
 	private AppProfesorDAO profesorDAO;
 
 	@Override
-	public List<Examenes> getAllExamenes() {
-		return profesorDAO.getAllExamenes();
+	public List<Examenes> getAllExamenesByUsuario(String usuario) {
+		return profesorDAO.getAllExamenesByUsuario(usuario);
 	}
 
 	@Override
@@ -48,5 +49,20 @@ public class ProfesorServiceImpl implements ProfesorService
 	@Override
 	public boolean savePreguntas(List<Preguntas> preguntas) {
 		return profesorDAO.savePreguntas(preguntas);
+	}
+
+	@Override
+	public List<Respuestas_x_alumno> getRespuestasXAlumnoByExamen(int idExamen) {
+		return profesorDAO.getRespuestasXAlumnoByExamen(idExamen);
+	}
+
+	@Override
+	public Preguntas getPreguntaById(long idPregunta) {
+		return profesorDAO.getPreguntaById(idPregunta);
+	}
+
+	@Override
+	public Respuestas getRespuestaById(long idRespuesta) {
+		return profesorDAO.getRespuestaById(idRespuesta);
 	}	
 }

@@ -1,5 +1,6 @@
 package mx.com.doo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.validation.constraints.Min;
@@ -42,64 +43,94 @@ public class Persona {
 	@NotEmpty @Size(min=6,max=20)
 	private String contrasena;
 	
+	private Examenes [] examenes;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
+		
 		this.id = id;
 	}
-	public String getContrasena() {
-		return contrasena;
-	}
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getPaterno() {
 		return paterno;
 	}
+
 	public void setPaterno(String paterno) {
 		this.paterno = paterno;
 	}
+
 	public String getMaterno() {
 		return materno;
 	}
+
 	public void setMaterno(String materno) {
 		this.materno = materno;
 	}
+
 	public Date getEdad() {
 		return edad;
 	}
+
 	public void setEdad(Date edad) {
 		this.edad = edad;
 	}
+
 	public int getGrupo() {
 		return grupo;
 	}
+
 	public void setGrupo(int grupo) {
 		this.grupo = grupo;
 	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	public Examenes[] getExamenes() {
+		return examenes;
+	}
+
+	public void setExamenes(Examenes [] examenes) {
+		this.examenes = examenes;
+	}
+
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", username=" + username + ", email=" + email + ", nombre=" + nombre + ", paterno="
 				+ paterno + ", materno=" + materno + ", edad=" + edad + ", grupo=" + grupo + ", contrasena="
-				+ contrasena + "]";
-	}	
+				+ contrasena + ", examenes=" + Arrays.toString(examenes) + "]";
+	}
+	
 }

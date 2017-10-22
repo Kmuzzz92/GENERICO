@@ -12,8 +12,8 @@
 	<input type="hidden" name="${_csrf.parameterName}"
 		value="${_csrf.token}" />
 	<ul class="nav nav-tabs">
-		<li><a href="/GENERICO/profesor/preguntas">Examen</a></li>
-		<li><a href="#">Alumnos</a></li>
+		<li><a href="/GENERICO/profesor/preguntas">Preguntas</a></li>
+		<li><a href="/GENERICO/profesor/alumnos">Alumnos</a></li>
 		<li><a href="javascript:formSubmit()">Salir</a></li>
 	</ul>
 </form>

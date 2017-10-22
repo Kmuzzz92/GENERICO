@@ -16,4 +16,5 @@ public interface AppPersonaDAO {
 	
 	public boolean UpdatePersona(Persona persona);
 	
+	public List<Persona> getPersonas(String tipo, int idGrupo);	
 }

@@ -15,5 +15,5 @@ public interface AppGrupoDAO {
 	
 	public boolean deleteGrupo (Grupo grupo);
 	
-
+	public List<Grupo> getAllGruposByProfesor(int idProfesor);
 }

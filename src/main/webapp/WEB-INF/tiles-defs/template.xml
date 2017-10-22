@@ -106,6 +106,13 @@
 		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/examenes.jsp" />
 		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
     </definition>
+    
+      <!-- Alumnos -->
+    <definition name="alumnos" extends="defaultTemplate">            
+	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/profesor/menu.jsp" />
+		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/alumnos.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
+    </definition>
         
     <definition name="respuesta" template="/WEB-INF/jsp/tiles/default/respuesta.jsp">
     </definition>
