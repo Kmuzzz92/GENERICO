@@ -1,5 +1,6 @@
 package mx.com.doo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.validation.constraints.Min;
@@ -16,25 +17,13 @@ public class Examenes{
 	private String nombre;
 	
 	@NotEmpty
-	private String descripcion;
-	
-	@NotEmpty
 	private String usuario;
 	
 	@NotEmpty
 	private Date fecha_creacion;
+	 
+	private Preguntas [] preguntas;
 	
-	@NotNull
-	private boolean activo;
-	
-	public boolean isActivo() {
-		return activo;
-	}
-
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
-
 	public int getIdExamen() {
 		return idExamen;
 	}
@@ -49,14 +38,6 @@ public class Examenes{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public String getUsuario() {
@@ -76,10 +57,18 @@ public class Examenes{
 		this.fecha_creacion = fecha_creacion;
 	}
 
+	public Preguntas [] getPreguntas() {
+		return preguntas;
+	}
+
+	public void setPreguntas(Preguntas [] preguntas) {
+		this.preguntas = preguntas;
+	}
+
 	@Override
 	public String toString() {
-		return "Examenes [idExamen=" + idExamen + ", nombre=" + nombre + ", descripcion=" + descripcion + ", usuario="
-				+ usuario + ", fecha_creacion=" + fecha_creacion + ", activo=" + activo + "]";
+		return "Examenes [idExamen=" + idExamen + ", nombre=" + nombre + ", usuario="
+				+ usuario + ", fecha_creacion=" + fecha_creacion + ", preguntas="
+				+ Arrays.toString(preguntas) + "]";
 	}
-	
 }

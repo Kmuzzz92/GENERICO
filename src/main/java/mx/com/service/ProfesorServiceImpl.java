@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mx.com.dao.AppProfesorDAO;
 import mx.com.doo.Examenes;
+import mx.com.doo.Preguntas;
+import mx.com.doo.Respuestas;
+import mx.com.doo.tema;
 
 @Service
 @Transactional(readOnly=true)
@@ -25,5 +28,25 @@ public class ProfesorServiceImpl implements ProfesorService
 	@Override
 	public Examenes getExamenById(int idExamen) {
 		return profesorDAO.getExamenById(idExamen);
+	}
+
+	@Override
+	public List<tema> getAllTemas() {
+		return profesorDAO.getAllTemas();
+	}
+
+	@Override
+	public List<Preguntas> getAllPreguntasByUsuario(String usuario) {
+		return profesorDAO.getAllPreguntasByUsuario(usuario);
+	}
+
+	@Override
+	public List<Respuestas> getAllRespuestasByPregunta(long idPregunta) {
+		return profesorDAO.getAllRespuestasByPregunta(idPregunta);
+	}
+
+	@Override
+	public boolean savePreguntas(List<Preguntas> preguntas) {
+		return profesorDAO.savePreguntas(preguntas);
 	}	
 }

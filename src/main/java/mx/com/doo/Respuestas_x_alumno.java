@@ -16,7 +16,7 @@ public class Respuestas_x_alumno{
 				+ ", usuario=" + usuario + "]";
 	}
 
-	public int getIdRespuesta_alumno() {
+	public long getIdRespuesta_alumno() {
 		return idRespuesta_alumno;
 	}
 
@@ -32,7 +32,7 @@ public class Respuestas_x_alumno{
 		this.idExamen = idExamen;
 	}
 
-	public int getIdPregunta() {
+	public long getIdPregunta() {
 		return idPregunta;
 	}
 
@@ -40,7 +40,7 @@ public class Respuestas_x_alumno{
 		this.idPregunta = idPregunta;
 	}
 
-	public int getIdRespuesta() {
+	public long getIdRespuesta() {
 		return idRespuesta;
 	}
 
@@ -65,16 +65,16 @@ public class Respuestas_x_alumno{
 	}
 
 	@NotNull @Min(1)
-	private int idRespuesta_alumno;
+	private long idRespuesta_alumno;
 	
 	@NotNull @Min(1)
 	private int idExamen;
 	
 	@NotNull @Min(1)
-	private int idPregunta;
+	private long idPregunta;
 	
 	@NotNull @Min(1)
-	private int idRespuesta;
+	private long idRespuesta;
 	
 	@NotEmpty
 	private Date fecha_respuesta;

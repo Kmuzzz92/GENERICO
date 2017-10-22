@@ -1,5 +1,7 @@
 package mx.com.doo;
 
+import java.util.Arrays;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -8,20 +10,33 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Preguntas{
 	
 	@NotNull @Min(1)
-	private int idPregunta;
+	private long idPregunta;
 	
 	@NotEmpty
 	private String texto;
 	
-	@NotNull
-	private int idExamen;
+	@NotEmpty
+	private String usuario;
+	
+	@NotNull @Min(1)
+	private int nivel;
+	
+	@NotNull @Min(1)
+	private int tema;
 	
 	@NotEmpty
-	private String Usuario;
+	private Respuestas respuestas[];
 	
-	public String aux;
+	
+	public Respuestas[] getRespuestas() {
+		return respuestas;
+	}
 
-	public int getIdPregunta() {
+	public void setRespuestas(Respuestas[] respuestas) {
+		this.respuestas = respuestas;
+	}
+
+	public long getIdPregunta() {
 		return idPregunta;
 	}
 
@@ -37,35 +52,36 @@ public class Preguntas{
 		this.texto = texto;
 	}
 
-	public int getIdExamen() {
-		return idExamen;
-	}
-
-	public void setIdExamen(int idExamen) {
-		this.idExamen = idExamen;
-	}
-
 	public String getUsuario() {
-		return Usuario;
+		return usuario;
 	}
 
 	public void setUsuario(String usuario) {
-		Usuario = usuario;
+		this.usuario = usuario;
 	}
 
-	public String getAux() {
-		return aux;
+	public int getNivel() {
+		return nivel;
 	}
 
-	public void setAux(String aux) {
-		this.aux = aux;
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+	public int getTema() {
+		return tema;
+	}
+
+	public void setTema(int tema) {
+		this.tema = tema;
 	}
 
 	@Override
 	public String toString() {
-		return "Preguntas [idPregunta=" + idPregunta + ", texto=" + texto + ", idExamen=" + idExamen + ", Usuario="
-				+ Usuario + ", aux=" + aux + "]";
+		return "Preguntas [idPregunta=" + idPregunta + ", texto=" + texto + ", usuario=" + usuario + ", nivel=" + nivel
+				+ ", tema=" + tema + ", respuestas=" + Arrays.toString(respuestas) + "]";
 	}
+
 	
 	
 }

@@ -8,13 +8,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Respuestas{
 	
 	@NotNull @Min(1)
-	private int idRespuestas;
+	private long idRespuesta;
 	
 	@NotEmpty
 	private String texto;
 	
 	@NotNull @Min(1)
-	private int idPregunta;
+	private long idPregunta;
 	
 	@NotNull @Min(1)
 	private int orden;
@@ -25,12 +25,12 @@ public class Respuestas{
 	@NotEmpty
 	private String usuario;
 
-	public int getIdRespuestas() {
-		return idRespuestas;
+	public long getIdRespuesta() {
+		return idRespuesta;
 	}
 
-	public void setIdRespuestas(int idRespuestas) {
-		this.idRespuestas = idRespuestas;
+	public void setIdRespuesta(long idRespuesta) {
+		this.idRespuesta = idRespuesta;
 	}
 
 	public String getTexto() {
@@ -41,11 +41,11 @@ public class Respuestas{
 		this.texto = texto;
 	}
 
-	public int getIdPregunta() {
+	public long getIdPregunta() {
 		return idPregunta;
 	}
 
-	public void setIdPregunta(int idPregunta) {
+	public void setIdPregunta(long idPregunta) {
 		this.idPregunta = idPregunta;
 	}
 
@@ -75,9 +75,8 @@ public class Respuestas{
 
 	@Override
 	public String toString() {
-		return "Respuestas [idRespuestas=" + idRespuestas + ", texto=" + texto + ", idPregunta=" + idPregunta
-				+ ", orden=" + orden + ", correcto=" + correcto + ", usuario=" + usuario + "]";
+		return "Respuestas [idRespuesta=" + idRespuesta + ", texto=" + texto + ", idPregunta=" + idPregunta + ", orden="
+				+ orden + ", correcto=" + correcto + ", usuario=" + usuario + "]";
 	}
-	
-	
+
 }

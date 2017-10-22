@@ -29,6 +29,23 @@ a:link, a:visited {
 	color: #FFFF;
 }
 
+.modelado input[type="text"],.modelado textarea{
+	width: 100%;
+}
+
+.modelado .activo{
+	margin-bottom: 1em;
+}
+
+.modelado .agregar{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.modelado .respuesta{
+	margin: 1em 0em;
+}
+
 .btn-lg {
 	width: 100%;
 	background-color: #2427ac;
@@ -71,4 +88,20 @@ tbody tr:hover {
 
 .jumbotron h1{
 	color: #000;
+}
+
+.panel-group{
+	margin-bottom: 0px;
+}
+
+.panel-default{
+	margin-top: 0px;
+}
+
+.panel-group a:link,.panel-group a:visited {
+    color: #000;
+}
+
+.margin-resp{
+	margin-top: 1em;
 }

@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Examenes_x_alumno{
 	
 	@NotNull @Min(1)
-	private int idExamen_alumno;
+	private long idExamen_alumno;
 	
 	@NotNull @Min(1)
 	private int idExamen;
@@ -21,7 +21,7 @@ public class Examenes_x_alumno{
 	@NotEmpty
 	private Date fecha_asignacion;
 
-	public int getIdExamen_alumno() {
+	public long getIdExamen_alumno() {
 		return idExamen_alumno;
 	}
 

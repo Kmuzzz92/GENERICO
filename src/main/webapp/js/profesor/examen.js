@@ -1,20 +1,20 @@
 function Respuesta(){
 	this.texto="";
-	this.idPregunta=0;
 	this.orden=0;
 	this.correcto=false;
+	this.idPregunta=0;
 }
 
 function Pregunta(){
-	this.idExamen=0;
 	this.texto="";
 	this.respuestas=[];
+	this.nivel=0;
+	this.tema=0;
 }
 
 function Examen(){
+	this.idExamen=0;
 	this.nombre="";
-	this.descripcion="";
-	this.activo=0;
 	this.fecha_creacion= new Date();
 	this.preguntas=[];
 }
