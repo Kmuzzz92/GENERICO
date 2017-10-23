@@ -109,3 +109,11 @@ tbody tr:hover {
 .p-principal{
 	text-align: center;
 }
+
+.correcto{
+	background-color: green;
+}
+
+.incorrecto{
+	background-color: red;	
+}

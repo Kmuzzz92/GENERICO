@@ -9,9 +9,9 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,18 +25,26 @@ import mx.com.doo.Examenes;
 import mx.com.doo.Persona;
 import mx.com.doo.Preguntas;
 import mx.com.doo.Respuestas;
+import mx.com.doo.Respuestas_x_alumno;
 import mx.com.service.AlumnoService;
 import mx.com.service.PersonaService;
+import mx.com.service.ProfesorService;
 
 @Controller
 public class AlumnoController {
 	protected final static Logger log = LoggerFactory.getLogger(AlumnoController.class);
+	
+	@Value("${user_alumno}")
+	private String ROLE_ALUMNO;
 	
 	@Inject
 	private AlumnoService alumnoService;
 	
 	@Inject
 	private PersonaService personaService;
+	
+	@Inject
+	private ProfesorService profesorService;
 	
 	@RequestMapping(value = "/alumno/", method = RequestMethod.GET)
 	public ModelAndView principal(Authentication auth) {
@@ -104,7 +112,23 @@ public class AlumnoController {
 	public ModelAndView examenes(Authentication auth) {
 		ModelAndView model = new ModelAndView();
 		ObjectMapper mapper = new ObjectMapper();
+		List<Examenes> examenes = profesorService.getAllExamenesByUsuario(auth.getName());
+		for(int l=0;l<examenes.size();l++){
+			List<Respuestas_x_alumno> respuestas = profesorService.getRespuestasXAlumnoByExamen(examenes.get(l).getIdExamen());
+			Preguntas [] pre = new Preguntas[respuestas.size()];
+			for(int p=0;p<respuestas.size();p++){
+				pre[p]=profesorService.getPreguntaById(respuestas.get(p).getIdPregunta());
+				pre[p].setRespuestas(new Respuestas[]{profesorService.getRespuestaById(respuestas.get(p).getIdRespuesta())});
+			}
+			examenes.get(l).setPreguntas(pre);
+		}
 		model.setViewName("examenes");
+		try {
+			model.addObject("examenes", mapper.writeValueAsString(examenes));
+		} catch (JsonProcessingException e) {
+			log.error(e.toString());
+			model.addObject("examenes","[]");
+		}
 		return model;
 	}
 }
