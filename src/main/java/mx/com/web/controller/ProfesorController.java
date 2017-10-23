@@ -104,11 +104,12 @@ public class ProfesorController {
 					List<Examenes> examenes = profesorService.getAllExamenesByUsuario(personas.get(j).getUsername());
 					for(int l=0;l<examenes.size();l++){
 						List<Respuestas_x_alumno> respuestas = profesorService.getRespuestasXAlumnoByExamen(examenes.get(l).getIdExamen());
+						Preguntas [] pre = new Preguntas[respuestas.size()];
 						for(int p=0;p<respuestas.size();p++){
-							Preguntas [] pre = new Preguntas[]{profesorService.getPreguntaById(respuestas.get(p).getIdPregunta())};
-							pre[0].setRespuestas(new Respuestas[]{profesorService.getRespuestaById(respuestas.get(p).getIdRespuesta())});
-							examenes.get(l).setPreguntas(pre);
+							pre[p]=profesorService.getPreguntaById(respuestas.get(p).getIdPregunta());
+							pre[p].setRespuestas(new Respuestas[]{profesorService.getRespuestaById(respuestas.get(p).getIdRespuesta())});
 						}
+						examenes.get(l).setPreguntas(pre);
 					}
 					Examenes [] exa = new Examenes[examenes.size()];
 					personas.get(j).setExamenes(examenes.toArray(exa));
@@ -122,7 +123,7 @@ public class ProfesorController {
 				model.addObject("grupos", "[]");
 				log.error(e.toString());
 			}
-			model.setViewName("alumnos");
+			model.setViewName("profesorAlumnos");
 			return model;
 	}
 }

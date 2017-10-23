@@ -91,19 +91,20 @@ public class RegistroController {
 		try {
 			alu = mapper.readValue(registro,Persona.class);
 			if(alu.getId() == 0){
-			Users users = new Users();
-			users.setUsername(alu.getUsername());
-			users.setPassword(pass.Generate("123456"));
-			users.setEnabled(1);
-			UserRoles userRole = new UserRoles();
-			userRole.setRole(ROLE_ALUMNO);
-			userRole.setUsername(alu.getUsername());
-			if(adminService.InsertUser(users, userRole)){
-				if(!personaService.InsertPersona(alu)){
-					adminService.DeleteUser(users, userRole);
-					estatus = "NOOK";
+				alu.setNivel(1);
+				Users users = new Users();
+				users.setUsername(alu.getUsername());
+				users.setPassword(pass.Generate("123456"));
+				users.setEnabled(1);
+				UserRoles userRole = new UserRoles();
+				userRole.setRole(ROLE_ALUMNO);
+				userRole.setUsername(alu.getUsername());
+				if(adminService.InsertUser(users, userRole)){
+					if(!personaService.InsertPersona(alu)){
+						adminService.DeleteUser(users, userRole);
+						estatus = "NOOK";
+					}
 				}
-			}
 			}else{
 				if(!personaService.UpdatePersona(alu))
 					estatus="NOOK";
@@ -125,6 +126,7 @@ public class RegistroController {
 		try {
 			pro = mapper.readValue(registro,Persona.class);
 			if(pro.getId()==0){
+				pro.setNivel(1);
 				pro.setGrupo(1);
 				Users users = new Users();
 				users.setUsername(pro.getUsername());

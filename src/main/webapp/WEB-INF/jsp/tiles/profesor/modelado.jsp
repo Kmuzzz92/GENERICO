@@ -7,10 +7,7 @@
 <c:url value="/js/profesor/examen.js" var="obj" />
 
 <script type="text/javascript">
-	var temas = $
-	{
-		temas
-	};
+	var temas = ${temas};
 	var preguntas = ${preguntas};
 </script>
 

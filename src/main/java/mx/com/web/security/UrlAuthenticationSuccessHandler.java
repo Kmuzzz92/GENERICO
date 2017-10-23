@@ -52,7 +52,7 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
         }
         log.trace("El usuario: "+authentication.getName()+" ha ingresado al sistema a las: "+hourdateFormat.format(date));
     	if(permisos.contains("ROLE_USER")){
-    		return "/alumno";
+    		return "/alumno/";
     	}else if(permisos.contains("ROLE_PROFE")){
     		return "/profesor/preguntas";
     	}else if(permisos.contains("ROLE_ADMIN")){

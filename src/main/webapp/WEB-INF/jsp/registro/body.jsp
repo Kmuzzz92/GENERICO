@@ -7,7 +7,7 @@
 <c:url value="/js/registro/JSONRegistro.js" var="json" />
 
 <script type="text/javascript">
-var alumno = ${alumno};
+	var alumno = ${alumno};
 </script>
 <script type="text/javascript" src="${app}"></script>
 <script type="text/javascript" src="${ctrl}"></script>

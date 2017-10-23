@@ -88,7 +88,7 @@
     
     <!-- Alumnos -->
 	<definition name="alumnos" extends="defaultTemplate">            
-	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/grupos/menu.jsp" />
+	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/default/menu.jsp" />
 		<put-attribute name="body"    		value="/WEB-INF/jsp/registroprofesor/alumnos.jsp" />
 		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
     </definition>
@@ -99,21 +99,35 @@
 		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/modelado.jsp" />
 		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
     </definition>
-    
-      <!-- Examenes -->
-    <definition name="examenes" extends="defaultTemplate">            
-	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/profesor/menu.jsp" />
-		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/examenes.jsp" />
-		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
-    </definition>
-    
+       
       <!-- Alumnos -->
-    <definition name="alumnos" extends="defaultTemplate">            
+    <definition name="profesorAlumnos" extends="defaultTemplate">            
 	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/profesor/menu.jsp" />
 		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/profesor/alumnos.jsp" />
 		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
     </definition>
         
+     <!-- Examen Alumnos -->
+    <definition name="examen" extends="defaultTemplate">            
+	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/default/blank.jsp" />
+		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/alumno/examen.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
+    </definition>
+    
+    <!--Examenes Alumnos -->
+    <definition name="examenes" extends="defaultTemplate">            
+	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/alumno/menu.jsp" />
+		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/alumno/examenes.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
+    </definition>
+    
+    <!-- Examen Alumnos -->
+    <definition name="principal" extends="defaultTemplate">            
+	 	<put-attribute name="menu"    		value="/WEB-INF/jsp/tiles/alumno/menu.jsp" />
+		<put-attribute name="body"    		value="/WEB-INF/jsp/tiles/alumno/body.jsp" />
+		<put-attribute name="leftPanel" 	value="/WEB-INF/jsp/tiles/default/blank.jsp" />
+    </definition>
+    
     <definition name="respuesta" template="/WEB-INF/jsp/tiles/default/respuesta.jsp">
     </definition>
 </tiles-definitions>

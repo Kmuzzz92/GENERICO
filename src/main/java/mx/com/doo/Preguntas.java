@@ -27,6 +27,8 @@ public class Preguntas{
 	@NotEmpty
 	private Respuestas respuestas[];
 	
+	private long respuesta;
+	
 	public Respuestas[] getRespuestas() {
 		return respuestas;
 	}
@@ -75,12 +77,18 @@ public class Preguntas{
 		this.tema = tema;
 	}
 
+	public long getRespuesta() {
+		return respuesta;
+	}
+
+	public void setRespuesta(long respuesta) {
+		this.respuesta = respuesta;
+	}
+
 	@Override
 	public String toString() {
 		return "Preguntas [idPregunta=" + idPregunta + ", texto=" + texto + ", usuario=" + usuario + ", nivel=" + nivel
-				+ ", tema=" + tema + ", respuestas=" + Arrays.toString(respuestas) + "]";
+				+ ", tema=" + tema + ", respuestas=" + Arrays.toString(respuestas) + ", respuesta=" + respuesta + "]";
 	}
-
-	
 	
 }

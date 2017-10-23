@@ -43,6 +43,9 @@ public class Persona {
 	@NotEmpty @Size(min=6,max=20)
 	private String contrasena;
 	
+	@NotNull @Min(0)
+	private int nivel;
+	
 	private Examenes [] examenes;
 
 	public int getId() {
@@ -126,11 +129,18 @@ public class Persona {
 		this.examenes = examenes;
 	}
 
+	public int getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", username=" + username + ", email=" + email + ", nombre=" + nombre + ", paterno="
 				+ paterno + ", materno=" + materno + ", edad=" + edad + ", grupo=" + grupo + ", contrasena="
-				+ contrasena + ", examenes=" + Arrays.toString(examenes) + "]";
-	}
-	
+				+ contrasena + ", nivel=" + nivel + ", examenes=" + Arrays.toString(examenes) + "]";
+	}	
 }

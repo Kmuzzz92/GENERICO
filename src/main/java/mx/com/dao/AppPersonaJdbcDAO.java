@@ -33,7 +33,7 @@ public class AppPersonaJdbcDAO implements AppPersonaDAO {
 		Map<String, Object> paramUser = new HashMap<String, Object>();
 		SimpleDateFormat fecha = new SimpleDateFormat("MM/dd/yyyy");
 		try {
-			String sql = "INSERT INTO [plataforma].[dbo].[persona] ([username],[email],[nombre],[paterno],[materno],[edad],[grupo]) VALUES (:username,:email,:nombre,:paterno,:materno,:edad,:grupo)";
+			String sql = "INSERT INTO [plataforma].[dbo].[persona] ([username],[email],[nombre],[paterno],[materno],[edad],[grupo],[nivel]) VALUES (:username,:email,:nombre,:paterno,:materno,:edad,:grupo,:nivel)";
 			paramUser.put("username", persona.getUsername());
 			paramUser.put("email", persona.getEmail());
 			paramUser.put("nombre", persona.getNombre());
@@ -41,6 +41,7 @@ public class AppPersonaJdbcDAO implements AppPersonaDAO {
 			paramUser.put("materno", persona.getMaterno());
 			paramUser.put("edad", fecha.format(persona.getEdad()));
 			paramUser.put("grupo", "" + persona.getGrupo());
+			paramUser.put("nivel",persona.getNivel());
 			jdbcTemplate.update(sql, paramUser);
 			return true;
 		} catch (Exception ex) {
@@ -101,13 +102,14 @@ public class AppPersonaJdbcDAO implements AppPersonaDAO {
 		Map<String, Object> paramUser = new HashMap<String, Object>();
 		SimpleDateFormat fecha = new SimpleDateFormat("MM/dd/yyyy");
 		try {
-			String sql = "UPDATE [plataforma].[dbo].[persona] SET [email] = :email,[nombre] = :nombre,[paterno] = :paterno,[materno] = :materno,[edad] = :edad WHERE username=:username";
+			String sql = "UPDATE [plataforma].[dbo].[persona] SET [email] = :email,[nombre] = :nombre,[paterno] = :paterno,[materno] = :materno,[edad] = :edad,[nivel]=:nivel WHERE username=:username";
 			paramUser.put("username", persona.getUsername());
 			paramUser.put("email", persona.getEmail());
 			paramUser.put("nombre", persona.getNombre());
 			paramUser.put("paterno", persona.getPaterno());
 			paramUser.put("materno", persona.getMaterno());
 			paramUser.put("edad", fecha.format(persona.getEdad()));
+			paramUser.put("nivel", persona.getNivel());
 			jdbcTemplate.update(sql, paramUser);
 			return true;
 		} catch (Exception ex) {

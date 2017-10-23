@@ -45,7 +45,9 @@
 					            					</div>
 					            					<div id="collapse{{examen.idExamen}}" class="panel-collapse collapse">
 					                					<div class="panel-body">
-															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-resp">
+															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-resp" ng-repeat="pregunta in examen.preguntas">
+																<p>{{pregunta.texto}}</p>
+																<p ng-repeat="respuesta in pregunta.respuestas"> - {{respuesta.texto}}</p>
 															</div>
 														</div>
 													</div>
@@ -60,5 +62,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-resp">
 	</div>
 </div>
